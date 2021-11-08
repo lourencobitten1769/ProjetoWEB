@@ -83,9 +83,16 @@ class m211104_104610_init_rbac extends Migration
         $auth->addChild($admin,$manageProviders);
         $auth->addChild($admin,$productManager);
 
+        //criar o role de "cliente"
+        $client=$auth->createRole('client');
+        $auth->add($client);
+        $auth->addChild($client,$seeBuyProducts);
+        $auth->addChild($client,$searchProducts);
+        $auth->addChild($client,$manageOwnInfos);
+        $auth->addChild($client,$purchaseHistory);
 
 
-        //$auth->assign($admin,1);
+        $auth->assign($admin,1);
     }
 
     public function down()

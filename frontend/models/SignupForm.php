@@ -14,6 +14,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $morada;
+    public $nif;
 
 
     /**
@@ -33,6 +35,15 @@ class SignupForm extends Model
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
+            ['morada', 'trim'],
+            ['morada', 'required'],
+            ['morada', 'string', 'min' => 2, 'max' => 255],
+
+            ['nif', 'trim'],
+            ['nif', 'required'],
+            ['nif', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This NIF was registered.'],
+            ['nif', 'integer'],
+
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
         ];
@@ -45,18 +56,27 @@ class SignupForm extends Model
      */
     public function signup()
     {
-        if (!$this->validate()) {
-            return null;
-        }
-        
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
+        if ($this->validate()) {
+            $user = new User();
+            $user->username = $this->username;
+            $user->email = $this->email;
+            $user->morada = $this->morada;
+            $user->nif=$this->nif;
+            $user->socio=false;
+            $user->pontos=0;
+            $user->setPassword($this->password);
+            $user->generateAuthKey();
+            $user->save(false);
 
-        return $user->save() && $this->sendEmail($user);
+            // foram adicionadas as seguintes três linhas:
+            $auth = Yii::$app->authManager;
+            $clientRole = $auth->getRole('client');
+            $auth->assign($clientRole, $user->getId());
+
+            return $user;
+        }
+
+        return null;
     }
 
     /**
