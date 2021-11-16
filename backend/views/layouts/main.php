@@ -34,10 +34,23 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Users', 'url' => ['/user/index']],
-    ];
+    if(Yii::$app->user->can("manageUsers")){
+        $menuItems = [
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Utilizadores', 'url' => ['/user/index']],
+            ['label' => 'Fornecedores', 'url' => ['/user/index']],
+            ['label' => 'Encomendas', 'url' => ['/user/index']],
+            ['label' => 'Produtos', 'url' => ['/user/index']],
+        ];
+    }
+    else{
+        $menuItems = [
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Fornecedores', 'url' => ['/user/index']],
+            ['label' => 'Encomendas', 'url' => ['/user/index']],
+            ['label' => 'Produtos', 'url' => ['/user/index']],
+        ];
+    }
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {

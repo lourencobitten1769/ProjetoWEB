@@ -62,7 +62,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->can("manageUsers")){
+        if(Yii::$app->user->can("manageUsers") || Yii::$app->user->can("manageProducts")){
             return $this->render("index");
         }
         else{
