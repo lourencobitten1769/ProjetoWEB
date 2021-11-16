@@ -51,6 +51,14 @@ AppAsset::register($this);
             ['label' => 'Produtos', 'url' => ['/user/index']],
         ];
     }
+
+    $menuItems = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Users', 'url' => ['/user/index']],
+        ['label' => 'Products', 'url' => ['#']],
+        ['label' => 'Providers', 'url' => ['#']],
+    ];
+
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
@@ -83,8 +91,8 @@ AppAsset::register($this);
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
+        <p class="float-left"> BackOffice Loja Diferenciada</p>
+<!--        <p class="float-right">--><?//= Yii::powered() ?><!--</p>-->
     </div>
 </footer>
 
