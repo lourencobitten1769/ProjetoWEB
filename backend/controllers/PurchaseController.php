@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
 class PurchaseController extends \yii\web\Controller
 {
