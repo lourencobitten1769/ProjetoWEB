@@ -46,7 +46,7 @@ AppAsset::register($this);
     else{
         $menuItems = [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Fornecedores', 'url' => ['/provider/index']],
+            ['label' => 'Categorias', 'url' => ['/category/index']],
             ['label' => 'Encomendas', 'url' => ['/order/index']],
             ['label' => 'Produtos', 'url' => ['/product/index']],
         ];
