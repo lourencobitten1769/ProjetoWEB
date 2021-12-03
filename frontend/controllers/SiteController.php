@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use app\models\Products;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,7 +76,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $products=\common\models\Products::find()->all();
+        $total=\common\models\Products::find()->count();
+        return $this->render('index',['total'=>$total, 'products'=>$products]);
     }
 
     /**

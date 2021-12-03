@@ -37,13 +37,16 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
+        /*$searchModel = new UserSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
+        ]);*/
+
+        $users= \app\models\User::find()->all();
+        return $this->render('index',['users'=>$users]);
     }
 
     /**

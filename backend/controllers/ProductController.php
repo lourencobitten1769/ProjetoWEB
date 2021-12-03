@@ -3,10 +3,11 @@
 namespace backend\controllers;
 
 use app\models\Products;
-use app\models\ProductsSearch;
+use backend\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Products model.
@@ -24,7 +25,7 @@ class ProductController extends Controller
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
-                        'delete' => ['POST'],
+                        'delete' => ['GET'],
                     ],
                 ],
             ]
@@ -37,13 +38,17 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ProductsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        //$searchModel = new ProductSearch();
+        //$dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
+        $products= Products::find()->all();
+
+        /*return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+       */
+        return $this->render('index',['products'=>$products]);
     }
 
     /**
@@ -69,8 +74,18 @@ class ProductController extends Controller
         $model = new Products();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'product_id' => $model->product_id]);
+            if ($model->load($this->request->post())) {
+
+                $imageFile= UploadedFile::getInstance($model,'image');
+                if(isset($imageFile->size)){
+                    $imageFile->saveAs('@frontend/web/images/'.$imageFile->baseName.".".$imageFile->extension);
+                }
+
+                $model->image= $imageFile->baseName.".".$imageFile->extension;
+                $model->save(false);
+
+
+                return $this->redirect("?r=product%2Fview&product_id=" . $model->product_id);
             }
         } else {
             $model->loadDefaultValues();
@@ -79,6 +94,8 @@ class ProductController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+
+
     }
 
     /**
@@ -92,7 +109,14 @@ class ProductController extends Controller
     {
         $model = $this->findModel($product_id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $imageFile= UploadedFile::getInstance($model,'image');
+            if(isset($imageFile->size)){
+                $imageFile->saveAs('@frontend/web/images/'.$imageFile->baseName.".".$imageFile->extension);
+            }
+
+            $model->image= $imageFile->baseName.".".$imageFile->extension;
+            $model->save(false);
             return $this->redirect(['view', 'product_id' => $model->product_id]);
         }
 
@@ -124,7 +148,7 @@ class ProductController extends Controller
      */
     protected function findModel($product_id)
     {
-        if (($model = Products::findOne($id)) !== null) {
+        if (($model = Products::findOne($product_id)) !== null) {
             return $model;
         }
 

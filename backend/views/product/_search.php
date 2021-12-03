@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProductsSearch */
+/* @var $model backend\models\ProductSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -29,6 +29,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'size') ?>
 
     <?php // echo $form->field($model, 'stock') ?>
+
+    <?php // echo $form->field($model, 'image') ?>
 
     <?php // echo $form->field($model, 'category_id') ?>
 

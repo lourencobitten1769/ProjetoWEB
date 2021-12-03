@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -13,7 +13,6 @@ use Yii;
  * @property float $price
  * @property float $size
  * @property int $stock
- * @property string $image
  * @property int $category_id
  *
  * @property Categories $category
@@ -36,13 +35,12 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_name', 'description', 'price', 'size', 'stock', 'image', 'category_id'], 'required'],
+            [['product_name', 'description', 'price', 'size', 'stock', 'category_id'], 'required'],
             [['description'], 'string'],
             [['price', 'size'], 'number'],
             [['stock', 'category_id'], 'integer'],
-            [['product_name', 'image'], 'string', 'max' => 256],
+            [['product_name'], 'string', 'max' => 256],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'category_id']],
-            [['image'],'file','extensions'=>'jpg,png,gif','skipOnEmpty'=>false]
         ];
     }
 
@@ -58,7 +56,6 @@ class Products extends \yii\db\ActiveRecord
             'price' => 'Price',
             'size' => 'Size',
             'stock' => 'Stock',
-            'image' => 'Image',
             'category_id' => 'Category ID',
         ];
     }

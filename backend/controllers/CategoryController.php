@@ -37,13 +37,16 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $categories= Categories::find()->all();
+        //$searchModel = new CategorySearch();
+        //$dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('index', [
+        /*return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+        */
+        return $this->render('index', ['categories' => $categories]);
     }
 
     /**

@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="products-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'product_name')->textInput(['maxlength' => true]) ?>
 
@@ -22,7 +22,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'stock')->textInput() ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
+
+    <?php
+    $categories= \app\models\Categories::find()->all();
+
+    $listData=\yii\helpers\ArrayHelper::map($categories,'category_id','category');
+
+    ?>
+
+    <?= $form->field($model, 'category_id')->dropDownList($listData,['prompt'=>'Select...']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
