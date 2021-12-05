@@ -37,13 +37,8 @@ class ProviderController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ProvidersSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        $providers= Providers::find()->all();
+        return $this->render('index', ['providers' => $providers]);
     }
 
     /**

@@ -37,13 +37,9 @@ class OrderController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new OrdersSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $orders= Orders::find()->all();
+        return $this->render('index', ['orders' => $orders]);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
     }
 
     /**
