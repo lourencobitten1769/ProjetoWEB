@@ -14,27 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categories-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Categories', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?php /*GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'category_id',
-            'category',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); */?>
 
     <div class="container">
         <div class="row">
@@ -43,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <h4 class="title pull-left">Users List</h4>
+                                <h4 class="title pull-left">Categories List</h4>
                                 <a href="?r=category%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Create Category</a>
                             </div>
                         </div>
@@ -104,9 +85,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-
-    <a href="?r=category%2Fview&category_id=1">View</a>
-
     <?php Pjax::end(); ?>
 
 </div>
