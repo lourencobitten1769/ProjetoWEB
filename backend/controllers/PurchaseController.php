@@ -37,13 +37,10 @@ class PurchaseController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PurchasesSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $purchases= Purchases::find()->all();
+        $number_purchases=Purchases::find()->count();
+        return $this->render('index', ['purchases' => $purchases,'number_purchases'=>$number_purchases]);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
     }
 
     /**

@@ -13,10 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <div class="container">
         <div class="row">
@@ -69,6 +67,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             </tbody>
                         </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6">Showing <b><?php echo $number_users?></b> out of <b><?php echo $number_users?></b> entries</div>
+                            <div class="col-sm-6 col-xs-6">
+                                <ul class="pagination hidden-xs pull-right">
+                                    <li><a href="#">«</a></li>
+                                    <?php
+                                    $number_pages=ceil($number_users/5);
+
+                                    for($pag=1;$pag<=$number_pages;$pag++)
+                                    {
+                                        ?>
+                                    <li><a href="#"><?php echo $pag?></a></li><?php
+                                    }
+
+                                    ?>
+                                    <li><a href="#">»</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
     <?php Pjax::end(); ?>

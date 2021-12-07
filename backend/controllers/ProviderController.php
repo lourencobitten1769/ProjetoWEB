@@ -38,7 +38,8 @@ class ProviderController extends Controller
     public function actionIndex()
     {
         $providers= Providers::find()->all();
-        return $this->render('index', ['providers' => $providers]);
+        $number_providers=Providers::find()->count();
+        return $this->render('index', ['providers' => $providers,'number_providers'=>$number_providers]);
     }
 
     /**

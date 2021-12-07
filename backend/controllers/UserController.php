@@ -46,7 +46,8 @@ class UserController extends Controller
         ]);*/
 
         $users= \app\models\User::find()->all();
-        return $this->render('index',['users'=>$users]);
+        $number_users=\app\models\User::find()->count();
+        return $this->render('index',['users'=>$users,'number_users'=>$number_users]);
     }
 
     /**

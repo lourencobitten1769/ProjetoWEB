@@ -38,6 +38,7 @@ class CategoryController extends Controller
     public function actionIndex()
     {
         $categories= Categories::find()->all();
+        $number_categories=Categories::find()->count();
         //$searchModel = new CategorySearch();
         //$dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -46,7 +47,7 @@ class CategoryController extends Controller
             'dataProvider' => $dataProvider,
         ]);
         */
-        return $this->render('index', ['categories' => $categories]);
+        return $this->render('index', ['categories' => $categories,'number_categories'=>$number_categories]);
     }
 
     /**

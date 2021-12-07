@@ -42,13 +42,14 @@ class ProductController extends Controller
         //$dataProvider = $searchModel->search($this->request->queryParams);
 
         $products= Products::find()->all();
+        $number_products=Products::find()->count();
 
         /*return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
        */
-        return $this->render('index',['products'=>$products]);
+        return $this->render('index',['products'=>$products,'number_products'=>$number_products]);
     }
 
     /**

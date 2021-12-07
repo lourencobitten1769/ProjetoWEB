@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr>
                                 <th>Category ID</th>
                                 <th>Category Name</th>
+                                <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -63,19 +64,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6">showing <b>5</b> out of <b>25</b> entries</div>
+                            <div class="col-sm-6 col-xs-6">Showing <b><?php echo $number_categories?></b> out of <b><?php echo $number_categories?></b> entries</div>
                             <div class="col-sm-6 col-xs-6">
                                 <ul class="pagination hidden-xs pull-right">
                                     <li><a href="#">«</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#  ">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">»</a></li>
-                                </ul>
-                                <ul class="pagination visible-xs pull-right">
-                                    <li><a href="#">«</a></li>
+                                    <?php
+                                    $number_pages=ceil($number_categories/5);
+
+                                    for($pag=1;$pag<=$number_pages;$pag++)
+                                    {
+                                    ?>
+                                    <li><a href="#"><?php echo $pag?></a></li>
+                                    <?php } ?>
                                     <li><a href="#">»</a></li>
                                 </ul>
                             </div>

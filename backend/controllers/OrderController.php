@@ -38,7 +38,8 @@ class OrderController extends Controller
     public function actionIndex()
     {
         $orders= Orders::find()->all();
-        return $this->render('index', ['orders' => $orders]);
+        $number_orders=Orders::find()->count();
+        return $this->render('index', ['orders' => $orders,'number_orders'=>$number_orders]);
 
     }
 
