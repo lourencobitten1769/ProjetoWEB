@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Categories';
+$this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
 \backend\assets\AppAsset::register($this);
 
@@ -43,6 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td colspan="5"><input type="text" class="form-control" placeholder="Search Categories"></td>
                             </tr>
                             <?php
+                            $qnt=5;
+                            $inicio=(1*$qnt)-$qnt;
+                            $pags=ceil($number_categories/$qnt);
+                            $max_links=$pags;
                             foreach ($categories as $category){?>
                                 <tr>
                                     <td><?php echo $category->category_id?></td>

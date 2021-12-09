@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
 \backend\assets\AppAsset::register($this);
 ?>

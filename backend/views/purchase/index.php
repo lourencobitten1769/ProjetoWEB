@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\PurchasesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Purchases';
+$this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
 \backend\assets\AppAsset::register($this);
 
