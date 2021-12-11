@@ -23,7 +23,7 @@ $this->title = 'My Yii Application';
                     <div class="contentBx">
                         <h3><?php echo $product->product_name?></h3>
                         <h2 class="price"><?php echo $product->price?>€</h2>
-                        <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Buy Now</a>
+                        <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
                     </div>
                 </div>
             </div>
