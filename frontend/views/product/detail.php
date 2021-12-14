@@ -55,7 +55,7 @@ $this->title = $product->product_name;
 
         <section class="pt-5 pb-5">
             <div class="container">
-                <h2 class="text-center font-weight-bold mb-5 mt-5">Related products</h2>
+                <h2 class="text-center font-weight-bold mb-5 mt-5">Produtos Relacionados</h2>
                 <div class="row d-flex equal">
                         <div class="col-lg-3">
                             <div class="card" style="width: 200px">

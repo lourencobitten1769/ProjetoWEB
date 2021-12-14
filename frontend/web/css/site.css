@@ -2,8 +2,9 @@
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
 
-body{
+html,body{
     background-image:linear-gradient(dodgerblue,white);
+    height: 100%;
 }
 
     div .site-login{
@@ -109,8 +110,10 @@ body{
         width: 320px;
         height: 420px;
         background: #122936;
-        border-radius: 20px;
+        border-radius: 30px;
         overflow: hidden;
+        margin-left: 20%;
+        margin-top: 10%;
     }
     .card::before{
         content: '';
@@ -154,7 +157,7 @@ body{
     }
 
     .card:hover .imgBx img{
-        max-width: 50%;
+        max-width: 100%;
     }
 
     .card .contentBx{
