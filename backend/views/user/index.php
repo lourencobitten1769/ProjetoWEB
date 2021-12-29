@@ -55,9 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?php echo $user->pontos?></td>
                                     <td>
                                         <ul class="action-list">
-                                            <li><a href="?r=user%2Fview&user_id=<?php echo $user->id?>" class="btn btn-success"><i class="fa fa-search"></i></a></li>
-                                            <li><a href="?r=user%2Fupdate&user_id=<?php echo $user->id?>" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
-                                            <li><a href="?r=user%2Fdelete&user_id=<?php echo $user->id?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
+                                            <li><a href="?r=user%2Fview&id=<?php echo $user->id?>" class="btn btn-success"><i class="fa fa-search"></i></a></li>
+                                            <li><a href="?r=user%2Fupdate&id=<?php echo $user->id?>" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
+                                            <li><a href="?r=user%2Fdelete&id=<?php echo $user->id?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>

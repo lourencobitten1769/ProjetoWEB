@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Categories;
 use app\models\Products;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -77,8 +78,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $products=\common\models\Products::find()->all();
+        $categories=Categories::find()->all();
         $total=\common\models\Products::find()->count();
-        return $this->render('index',['total'=>$total, 'products'=>$products]);
+        return $this->render('index',['total'=>$total, 'products'=>$products, 'categories'=>$categories]);
     }
 
     /**
