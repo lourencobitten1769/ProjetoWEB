@@ -36,6 +36,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Página Inicial', 'url' => ['/site/index']],
+        ['label' => 'Carrinho de Compras' ,'url'=>['/cart/index']],
         ['label' => 'Perfil', 'url' => ['/user/profile']],
     ];
     if (Yii::$app->user->isGuest) {

@@ -21,7 +21,7 @@ class Controller extends \yii\web\Controller
     public function beforeAction($action)
     {
 
-        $this->view->params['cartItemCount'] = CartItem::getTotalQuantityForUser(currUserId());
+        $this->view->params['cartItemCount'] = CartItem::getTotalQuantityForUser(getId());
         return parent::beforeAction($action);
     }
 }

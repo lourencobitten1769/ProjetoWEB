@@ -39,9 +39,9 @@ $this->title = $product->product_name;
                     ?>
                     <hr>
                     <div class="btn-group cart">
-                        <button type="button" class="btn btn-success">
+                        <a href="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id])?>"><button type="button" class="btn btn-success btn-add-to-cart" >
                             Adicionar ao Carrinho
-                        </button>
+                        </button></a>
                     </div>
                     <div class="btn-group wishlist">
                         <button type="button" class="btn btn-danger">
