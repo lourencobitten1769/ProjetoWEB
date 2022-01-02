@@ -25,7 +25,7 @@ $this->title = 'Homepage';
                 <?php
                 foreach ($categories as $category){
                     ?>
-                    <li><a href="#"><?php echo $category->category?></a> </li>
+                    <li><a href="?r=product%2Fcategory&category_id=<?php echo $category['category_id']?>"><?php echo $category['category']?></a></li>
                 <?php
                 }
                 ?>
@@ -45,12 +45,12 @@ $this->title = 'Homepage';
                 <div class="col-lg-3">
                     <div class="card" style="width: 200px;">
                         <div class="imgBx">
-                            <img src="images/<?php echo $product->image?>" style="width: 200px;height: 170px">
+                            <img src="images/<?php echo $product['image']?>" style="width: 200px;height: 170px">
                         </div>
                         <div class="contentBx">
-                            <h3><?php echo $product->product_name?></h3>
-                            <h2 class="price"><?php echo $product->price?>€</h2>
-                            <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
+                            <h3><?php echo $product['product_name']?></h3>
+                            <h2 class="price"><?php echo $product['price']?>€</h2>
+                            <a href="?r=product%2Fdetail&id=<?php echo $product['product_id']?>" class="buy">Comprar</a>
                         </div>
                     </div>
                 </div>

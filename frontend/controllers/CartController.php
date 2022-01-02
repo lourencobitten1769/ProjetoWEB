@@ -42,8 +42,7 @@ class CartController extends \yii\web\Controller
                 'class'=> ContentNegotiator::class,
                 'only' => ['add'],
                 'formats' => [
-                    'application/json' => Response::FORMAT_JSON,
-                    'application/xml' => Response::FORMAT_XML,
+
                 ],
             ],
             [
@@ -111,14 +110,19 @@ class CartController extends \yii\web\Controller
 
 
             if($cartItem->save()){
-                return [
-                    'success'=> true
-                ];
-            } else{
-                return [
-                    'success'=>false,
-                    'errors'=>$cartItem->errors
-                ];
+                $cartItems= CartItems::findBySql("
+                SELECT c.product_id as id,
+                p.image,
+                p.product_name,
+                p.price,
+                c.quantity,
+                p.price * c.quantity as total_price
+                FROM cart_items c LEFT JOIN products p on p.product_id= c.product_id WHERE c.created_by=:userId",['userId'=> Yii::$app->user->id])
+                    ->asArray()
+                    ->all();
+                return $this->render('index',['items'=>$cartItems]);
+
+
             }
         }
 

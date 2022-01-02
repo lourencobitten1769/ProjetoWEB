@@ -8,6 +8,7 @@ $this->title = 'Homepage';
 \backend\assets\AppAsset::register($this);
 ?>
 
+
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -39,6 +40,24 @@ $this->title = 'Homepage';
 
                 <div class="col-sm-8">
                     <h1>Histórico de Compras</h1>
+                    <table class="col-xs-7 table-bordered table-striped table-condensed table-fixed">
+                        <thead>
+                        <tr>
+                            <th class="col">Data de Compra</th>
+                            <th class="col">Preço Total</th>
+                            <th class="col">Consultar Compra</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($purchases as $purchase):?>
+                            <tr>
+                                <td class="col"><?php echo $purchase['date']?></td>
+                                <td class="col"><?php echo $purchase['total_price']?></td>
+                                <td class="col">Consultar</td>
+                            </tr>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

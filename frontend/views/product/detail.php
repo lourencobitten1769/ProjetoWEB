@@ -19,7 +19,7 @@ $this->title = $product->product_name;
                     </div>
                 </div>
 
-                <div class="col-md-7">
+                <div class="col-md-8">
                     <div class="product-title"><?php echo $product->product_name ?></div>
                     <div class="product-desc"><?php echo $product->description ?></div>
                     <hr>
@@ -43,68 +43,22 @@ $this->title = $product->product_name;
                             Adicionar ao Carrinho
                         </button></a>
                     </div>
-                    <div class="btn-group wishlist">
-                        <button type="button" class="btn btn-danger">
-                            Comprar
-                        </button>
-
-                    </div>
                 </div>
             </div>
         </div>
-
-        <section class="pt-5 pb-5">
-            <div class="container">
-                <h2 class="text-center font-weight-bold mb-5 mt-5">Produtos Relacionados</h2>
+         <div class="container">
+                <h5 class="text-center font-weight-bold">Produtos Relacionados</h5>
                 <div class="row d-flex equal">
                         <div class="col-lg-3">
-                            <div class="card" style="width: 200px">
+                            <div class="card" style="width: 150px;height: 280px">
                                 <div class="imgBx">
-                                    <img src="images/<?php echo $product->image?>" style="width: 200px">
+                                    <img src="images/<?php echo $product->image?>" style="width: 100px">
                                 </div>
                                 <div class="contentBx">
                                     <h3><?php echo $product->product_name?></h3>
                                     <h2 class="price"><?php echo $product->price?>€</h2>
-                                    <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
+                                    <a style="width: 140px;height: 40px;font-size: 15px" href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
                                 </div>
                             </div>
                     </div>
-                        <div class="col-lg-3">
-                            <div class="card" style="width: 200px">
-                                <div class="imgBx">
-                                    <img src="images/<?php echo $product->image?>" style="width: 200px">
-                                </div>
-                                <div class="contentBx">
-                                    <h3><?php echo $product->product_name?></h3>
-                                    <h2 class="price"><?php echo $product->price?>€</h2>
-                                    <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
-                                </div>
-                            </div>
-                    </div>
-                        <div class="col-lg-3">
-                            <div class="card" style="width: 200px">
-                                <div class="imgBx">
-                                    <img src="images/<?php echo $product->image?>" style="width: 200px">
-                                </div>
-                                <div class="contentBx">
-                                    <h3><?php echo $product->product_name?></h3>
-                                    <h2 class="price"><?php echo $product->price?>€</h2>
-                                    <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="col-lg-3">
-                        <div class="card" style="width: 200px">
-                            <div class="imgBx">
-                                <img src="images/<?php echo $product->image?>" style="width: 200px">
-                            </div>
-                            <div class="contentBx">
-                                <h3><?php echo $product->product_name?></h3>
-                                <h2 class="price"><?php echo $product->price?>€</h2>
-                                <a href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
-                            </div>
-                        </div>
-                </div>
             </div>
-        </section>
-

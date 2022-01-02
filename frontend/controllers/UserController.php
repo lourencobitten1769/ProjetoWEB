@@ -7,7 +7,13 @@ class UserController extends \yii\web\Controller
 {
     public function actionProfile()
     {
-        return $this->render('userProfile');
+//        $purchases=find()->all(array('conditions' => 'user_id ='.\Yii::$app->user->id));
+
+      $purchases=\common\models\Purchases::findBySql('SELECT date,total_price FROM purchases WHERE user_id=:userId',['userId'=> \Yii::$app->user->id])->asArray()->all();
+
+
+
+        return $this->render('userProfile', ['purchases' => $purchases]);
     }
 
     public function actionUpdate($id){
