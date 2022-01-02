@@ -36,7 +36,7 @@
             </tbody>
         </table>
 
-        <a href="<?php echo \yii\helpers\Url::to(['/cart/checkout'])?>" class="btn btn-primary">Checkout</a>
+        <a href="<?php echo \yii\helpers\Url::to(['/cart/confirm'])?>" class="btn btn-primary">Checkout</a>
 
         <?php else:?>
             <table class="table table-hover">

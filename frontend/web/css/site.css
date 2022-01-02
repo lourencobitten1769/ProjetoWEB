@@ -491,3 +491,25 @@ label #close{
     color: white;
 }
 
+/*ConfirmPurchase*/
+
+.confirm-purchase{
+    background-color: white;
+    border-radius: 10px;
+    height: 87vh;
+}
+
+.purchase-item table{
+    margin-left:37%;
+    border: 1px solid;
+}
+
+.purchase-item td{
+    text-align: center;
+    padding:40px;
+}
+
+.payment-methods{
+    margin-left:45%;
+    margin-top: 2%;
+}

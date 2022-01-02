@@ -80,6 +80,7 @@ class SiteController extends Controller
         $products=\common\models\Products::find()->all();
         $categories=Categories::find()->all();
         $total=\common\models\Products::find()->count();
+
         return $this->render('index',['total'=>$total, 'products'=>$products, 'categories'=>$categories]);
     }
 

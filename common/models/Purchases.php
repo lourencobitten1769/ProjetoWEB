@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $purchase_id
  * @property float $total_price
- * @property int $quantity
  * @property string $date
  * @property int $user_id
  *
@@ -32,9 +31,9 @@ class Purchases extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['total_price', 'quantity', 'date', 'user_id'], 'required'],
+            [['total_price', 'date', 'user_id'], 'required'],
             [['total_price'], 'number'],
-            [['quantity', 'user_id'], 'integer'],
+            [['user_id'], 'integer'],
             [['date'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -48,7 +47,6 @@ class Purchases extends \yii\db\ActiveRecord
         return [
             'purchase_id' => 'Purchase ID',
             'total_price' => 'Total Price',
-            'quantity' => 'Quantity',
             'date' => 'Date',
             'user_id' => 'User ID',
         ];
