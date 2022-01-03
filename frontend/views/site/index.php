@@ -35,9 +35,11 @@ $this->title = 'Homepage';
             </ul>
         </div>
 
-        <div>
-            <input type="text" placeholder="Procurar..." style="margin-left: 90%;border-radius: 40px">
-        </div>
+        <form method="post" action="?r=product%2Fsearch">
+            <label>Search</label>
+            <input type="text" name="search">
+            <input type="submit" name="submit">
+        </form>
         <br>
         <div class="row d-flex equal" >
         <?php

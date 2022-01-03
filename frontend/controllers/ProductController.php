@@ -19,4 +19,11 @@ class ProductController extends \yii\web\Controller
         return $this->render('/site/index',['products'=>$products,'categories'=>$categories]);
     }
 
+    public function actionSearch(){
+        $search=$_POST['search'];
+        $products=\common\models\Products::findBySql("SELECT * FROM products WHERE product_name LIKE '%$search%'")->asArray()->all();
+        $categories=Categories::find()->all();
+        return $this->render('/site/index',['products'=>$products,'categories'=>$categories]);
+    }
+
 }
