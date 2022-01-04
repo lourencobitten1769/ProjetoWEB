@@ -53,7 +53,7 @@ $this->title = 'Homepage';
                             <tr>
                                 <td class="col"><?php echo $purchase['date']?></td>
                                 <td class="col"><?php echo $purchase['total_price']?></td>
-                                <td class="col">Consultar</td>
+                                <td class="col"><a href="?r=purchase%2Fpdf&purchase_id=<?php echo $purchase['purchase_id']?>">Consultar</a> </td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>

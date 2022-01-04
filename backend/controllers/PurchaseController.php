@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\Purchases;
 use app\models\PurchasesSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,9 +38,15 @@ class PurchaseController extends Controller
      */
     public function actionIndex()
     {
-        $purchases= Purchases::find()->all();
+        $purchases= Purchases::find();
+        $provider= new ActiveDataProvider([
+            'query'=>$purchases,
+            'pagination'=>[
+                'pageSize'=> 5
+            ]
+        ]);
         $number_purchases=Purchases::find()->count();
-        return $this->render('index', ['purchases' => $purchases,'number_purchases'=>$number_purchases]);
+        return $this->render('index', ['purchases' => $provider,'number_purchases'=>$number_purchases]);
 
     }
 

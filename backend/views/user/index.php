@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td colspan="5"><input type="text" class="form-control" placeholder="Search Products"></td>
                             </tr>
                             <?php
-                            foreach ($users as $user){?>
+                            foreach ($users->getModels() as $user){?>
                                 <tr>
                                     <td></td>
                                     <td><?php echo $user->username?></td>
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6">Showing <b><?php echo $number_users?></b> out of <b><?php echo $number_users?></b> entries</div>
+                            <div class="col-sm-6 col-xs-6">Showing <b>5</b> out of <b><?php echo $number_users?></b> entries</div>
                             <div class="col-sm-6 col-xs-6">
                                 <ul class="pagination hidden-xs pull-right">
                                     <li><a href="#">«</a></li>
@@ -80,9 +80,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     for($pag=1;$pag<=$number_pages;$pag++)
                                     {
                                         ?>
-                                    <li><a href="#"><?php echo $pag?></a></li><?php
+                                    <li><a href="?r=user%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
+                                    <?php
                                     }
-
                                     ?>
                                     <li><a href="#">»</a></li>
                                 </ul>

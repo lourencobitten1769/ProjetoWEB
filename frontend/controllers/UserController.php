@@ -9,7 +9,7 @@ class UserController extends \yii\web\Controller
     {
 //        $purchases=find()->all(array('conditions' => 'user_id ='.\Yii::$app->user->id));
 
-      $purchases=\common\models\Purchases::findBySql('SELECT date,total_price FROM purchases WHERE user_id=:userId',['userId'=> \Yii::$app->user->id])->asArray()->all();
+      $purchases=\common\models\Purchases::findBySql('SELECT purchase_id,date,total_price FROM purchases WHERE user_id=:userId',['userId'=> \Yii::$app->user->id])->asArray()->all();
 
 
 

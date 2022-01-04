@@ -35,7 +35,7 @@ $this->title = 'Homepage';
             </ul>
         </div>
 
-        <form method="post" action="?r=product%2Fsearch">
+        <form method="post" action="?r=product%2Fsearch" style="float: right">
             <label>Search</label>
             <input type="text" name="search">
             <input type="submit" name="submit">

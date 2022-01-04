@@ -11,6 +11,9 @@ $this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
 \backend\assets\AppAsset::register($this);
 
+
+
+
 ?>
 <div class="purchases-index">
 
@@ -33,7 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr>
                                 <th>Purchase ID</th>
                                 <th>Preço Total</th>
-                                <th>Quantidade</th>
                                 <th>Data</th>
                                 <th>User ID</th>
                                 <th>Ações</th>
@@ -44,11 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td colspan="5"><input type="text" class="form-control" placeholder="Search Orders"></td>
                             </tr>
                             <?php
-                            foreach ($purchases as $purchase){?>
+                            foreach ($purchases->getModels() as $purchase){?>
                                 <tr>
                                     <td><?php echo $purchase->purchase_id?></td>
                                     <td><?php echo $purchase->total_price?></td>
-                                    <td><?php echo $purchase->quantity?></td>
                                     <td><?php echo $purchase->date?></td>
                                     <td><?php echo $purchase->user_id?></td>
 
@@ -68,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6">Showing <b><?php echo $number_purchases ?> </b> out of <b><?php echo $number_purchases ?></b> entries</div>
+                            <div class="col-sm-6 col-xs-6">Showing <b>5</b> out of <b><?php echo $number_purchases ?></b> entries</div>
                             <div class="col-sm-6 col-xs-6">
                                 <ul class="pagination hidden-xs pull-right">
                                     <li><a href="#">«</a></li>
@@ -78,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     for($pag=1;$pag<=$number_pages;$pag++)
                                     {
                                         ?>
-                                        <li><a href="#"><?php echo $pag?></a></li>
+                                        <li><a href="?r=purchase%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
                                     <?php } ?>
                                     <li><a href="#">»</a></li>
                                 </ul>

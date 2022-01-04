@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
                                 <h4 class="title pull-left">Orders List</h4>
-                                <a href="?r=provider%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Create Order</a>
+                                <a href="?r=order%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Create Order</a>
                             </div>
                         </div>
                     </div>

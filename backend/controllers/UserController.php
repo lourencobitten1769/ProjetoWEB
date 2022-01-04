@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\user;
 use backend\models\UserSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -45,9 +46,15 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
         ]);*/
 
-        $users= \app\models\User::find()->all();
+        $users= \app\models\User::find();
+        $provider= new ActiveDataProvider([
+            'query'=>$users,
+            'pagination'=>[
+                'pageSize'=> 5
+            ]
+        ]);
         $number_users=\app\models\User::find()->count();
-        return $this->render('index',['users'=>$users,'number_users'=>$number_users]);
+        return $this->render('index',['users'=>$provider,'number_users'=>$number_users]);
     }
 
     /**

@@ -43,11 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td colspan="5"><input type="text" class="form-control" placeholder="Search Categories"></td>
                             </tr>
                             <?php
-                            $qnt=5;
-                            $inicio=(1*$qnt)-$qnt;
-                            $pags=ceil($number_categories/$qnt);
-                            $max_links=$pags;
-                            foreach ($categories as $category){?>
+
+                            $number_pages=ceil($number_categories/5);
+
+                            foreach ($categories->getModels() as $category){?>
                                 <tr>
                                     <td><?php echo $category->category_id?></td>
                                     <td><?php echo $category->category?></td>
@@ -78,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     for($pag=1;$pag<=$number_pages;$pag++)
                                     {
                                     ?>
-                                    <li><a href="#"><?php echo $pag?></a></li>
+                                        <li><a href="?r=category%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
                                     <?php } ?>
                                     <li><a href="#">»</a></li>
                                 </ul>

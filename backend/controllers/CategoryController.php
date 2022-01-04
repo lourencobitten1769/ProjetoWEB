@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\Categories;
 use backend\models\CategorySearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,7 +38,13 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $categories= Categories::find()->all();
+        $categories= Categories::find();
+        $provider= new ActiveDataProvider([
+            'query'=>$categories,
+            'pagination'=>[
+                'pageSize'=> 5
+            ]
+        ]);
         $number_categories=Categories::find()->count();
         //$searchModel = new CategorySearch();
         //$dataProvider = $searchModel->search($this->request->queryParams);
@@ -47,7 +54,7 @@ class CategoryController extends Controller
             'dataProvider' => $dataProvider,
         ]);
         */
-        return $this->render('index', ['categories' => $categories,'number_categories'=>$number_categories]);
+        return $this->render('index', ['categories' => $provider,'number_categories'=>$number_categories]);
     }
 
     /**

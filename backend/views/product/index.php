@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td colspan="5"><input type="text" class="form-control" placeholder="Search Products"></td>
                             </tr>
                             <?php
-                            foreach ($products as $product){?>
+                            foreach ($products->getModels() as $product){?>
                             <tr>
                                 <td>
                                     <div class="user_icon">
@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 for($pag=1;$pag<=$number_pages;$pag++)
                                 {
                                     ?>
-                                    <li><a href="#"><?php echo $pag?></a></li>
+                                    <li><a href="?r=product%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
                                 <?php } ?>
                                 <li><a href="#">»</a></li>
                             </ul>

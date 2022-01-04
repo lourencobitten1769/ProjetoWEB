@@ -120,7 +120,7 @@ class ProviderController extends Controller
      */
     protected function findModel($providers_id)
     {
-        if (($model = Providers::findOne($id)) !== null) {
+        if (($model = Providers::findOne($providers_id)) !== null) {
             return $model;
         }
 

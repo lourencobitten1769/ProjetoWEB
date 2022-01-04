@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\Products;
 use backend\models\ProductSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -41,7 +42,13 @@ class ProductController extends Controller
         //$searchModel = new ProductSearch();
         //$dataProvider = $searchModel->search($this->request->queryParams);
 
-        $products= Products::find()->all();
+        $products= Products::find();
+        $provider= new ActiveDataProvider([
+            'query'=>$products,
+            'pagination'=>[
+                'pageSize'=> 5
+            ]
+        ]);
         $number_products=Products::find()->count();
 
         /*return $this->render('index', [
@@ -49,7 +56,7 @@ class ProductController extends Controller
             'dataProvider' => $dataProvider,
         ]);
        */
-        return $this->render('index',['products'=>$products,'number_products'=>$number_products]);
+        return $this->render('index',['products'=>$provider,'number_products'=>$number_products]);
     }
 
     /**
