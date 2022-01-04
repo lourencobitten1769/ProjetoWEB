@@ -45,7 +45,6 @@
                     ['label' => 'Produtos', 'url' => ['product/index']],
                     ['label' => 'Categorias', 'url' => ['category/index']],
                     ['label' => 'Encomendas', 'url' => ['order/index']],
-                    ['label' => 'Fornecedores', 'url' => ['provider/index']],
                     ['label' => 'Compras', 'url' => ['purchase/index']],
 
                 ];

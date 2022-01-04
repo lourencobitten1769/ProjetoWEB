@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use app\models\Orders;
 use app\models\OrdersSearch;
+use common\models\Products;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,10 +39,10 @@ class OrderController extends Controller
      */
     public function actionIndex()
     {
-        $orders= Orders::find()->all();
-        $number_orders=Orders::find()->count();
-        return $this->render('index', ['orders' => $orders,'number_orders'=>$number_orders]);
+        $products=Products::find()->all();
 
+
+        return $this->render('index', ['products' => $products]);
     }
 
     /**
@@ -85,17 +87,32 @@ class OrderController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($order_id)
+    public function actionUpdate($product_id)
     {
-        $model = $this->findModel($order_id);
+        $product=Products::findOne($product_id);
+        $quantity=$_POST['quantity'];
 
+        $product->stock=$product->stock + $quantity;
+        $product->save();
+
+        $products= \app\models\Products::find();
+        $provider= new ActiveDataProvider([
+            'query'=>$products,
+            'pagination'=>[
+                'pageSize'=> 5
+            ]
+        ]);
+        $number_products=Products::find()->count();
+
+        return $this->render('../product/index',['products'=>$provider,'number_products'=>$number_products]);
+      /*
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'order_id' => $model->order_id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-        ]);
+        ]);*/
     }
 
     /**

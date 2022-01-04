@@ -128,7 +128,7 @@ class PurchaseController extends Controller
      */
     protected function findModel($purchase_id)
     {
-        if (($model = Purchases::findOne($id)) !== null) {
+        if (($model = Purchases::findOne($purchase_id)) !== null) {
             return $model;
         }
 

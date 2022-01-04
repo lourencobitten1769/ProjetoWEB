@@ -18,9 +18,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'size')->textInput(['class'=>'size form-control']) ?>
 
-    <?= $form->field($model, 'stock')->textInput() ?>
+    <?php
+
+    if($model->category_id==1)
+    {
+            echo $form->field($model, 'size')->textInput(['class'=>'size form-control']);
+    }
+    else
+    {
+            echo $form->field($model, 'size')->textInput(['class'=>'size form-control','disabled' => true]);
+    }?>
 
     <?= $form->field($model, 'image')->fileInput() ?>
 
