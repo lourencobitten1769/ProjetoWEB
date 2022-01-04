@@ -36,9 +36,8 @@ $this->title = 'Homepage';
         </div>
 
         <form method="post" action="?r=product%2Fsearch" style="float: right">
-            <label>Search</label>
-            <input type="text" name="search">
-            <input type="submit" name="submit">
+            <input class="submit" type="text" name="search">
+            <input class="btn btn-dark" type="submit" name="submit" value="Procurar">
         </form>
         <br>
         <div class="row d-flex equal" >

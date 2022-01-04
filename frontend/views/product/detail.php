@@ -27,7 +27,7 @@ $this->title = $product->product_name;
                     <?php
                     $stock=$product->stock;
 
-                    if($stock=0)
+                    if($stock==0)
                     {
                         ?><div class="product-fora-stock">Fora de Stock</div><?php
                     }
@@ -39,9 +39,22 @@ $this->title = $product->product_name;
                     ?>
                     <hr>
                     <div class="btn-group cart">
-                        <a href="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id])?>"><button type="button" class="btn btn-success btn-add-to-cart" >
-                            Adicionar ao Carrinho
+                        <?php
+                        if($stock==0)
+                        {?>
+                            <a href="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id])?>"><button type="button" class="btn btn-success btn-add-to-cart" disabled>
+                        Adicionar ao Carrinho
                         </button></a>
+                        <?php
+                        }
+                        else{
+                            ?>
+                            <a href="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id])?>"><button type="button" class="btn btn-success btn-add-to-cart">
+                            Adicionar ao Carrinho
+                            </button></a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -49,16 +62,27 @@ $this->title = $product->product_name;
          <div class="container">
                 <h5 class="text-center font-weight-bold">Produtos Relacionados</h5>
                 <div class="row d-flex equal">
-                        <div class="col-lg-3">
-                            <div class="card" style="width: 150px;height: 280px">
-                                <div class="imgBx">
-                                    <img src="images/<?php echo $product->image?>" style="width: 100px">
-                                </div>
-                                <div class="contentBx">
-                                    <h3><?php echo $product->product_name?></h3>
-                                    <h2 class="price"><?php echo $product->price?>€</h2>
-                                    <a style="width: 140px;height: 40px;font-size: 15px" href="?r=product%2Fdetail&id=<?php echo $product->product_id?>" class="buy">Comprar</a>
-                                </div>
-                            </div>
-                    </div>
+                    <?php
+                    foreach($related_products as $related_product)
+                    {
+                        if($related_product['product_id']!=$product['product_id'])
+                        {
+                        ?>
+                     <div class="col-lg-3">
+                         <div class="card" style="width: 150px;height: 280px">
+                             <div class="imgBx">
+                                 <img src="images/<?php echo $related_product['image']?>" style="width: 100px">
+                             </div>
+                             <div class="contentBx">
+                                 <h4><?php echo $related_product['product_name']?></h4>
+                                 <h4 class="price"><?php echo $related_product['price']?>€</h4>
+                                 <a style="width: 140px;height: 40px;font-size: 15px" href="?r=product%2Fdetail&id=<?php echo $related_product['product_id']?>" class="buy">Comprar</a>
+                             </div>
+                         </div>
+                     </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
             </div>

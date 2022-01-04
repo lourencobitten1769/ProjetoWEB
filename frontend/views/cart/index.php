@@ -11,12 +11,12 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Product</th>
-                <th>Image</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Action</th>
+                <th>Produto</th>
+                <th>Imagem</th>
+                <th>Preço Unitário</th>
+                <th>Quantidade</th>
+                <th>Preço Total</th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
                     <td><?php echo $item['quantity']?></td>
                     <td><?php echo $item['total_price']?></td>
                     <td><?php echo \yii\helpers\Html::a('Delete',['/cart/delete', 'id'=> $item['id']],[
-                            'class' =>'btn btn-outline-danger btn-sm',
+                            'class' =>'btn btn-danger btn-sm',
                             'data-method' => 'post'
                         ])?></td>
                 </tr>
@@ -36,7 +36,7 @@
             </tbody>
         </table>
 
-        <a href="<?php echo \yii\helpers\Url::to(['/cart/confirm'])?>" class="btn btn-primary">Checkout</a>
+        <a href="<?php echo \yii\helpers\Url::to(['/cart/confirm'])?>" style="float:right;" class="btn btn-dark">Checkout</a>
 
         <?php else:?>
             <table class="table table-hover">
