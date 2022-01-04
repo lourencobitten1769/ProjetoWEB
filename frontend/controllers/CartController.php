@@ -100,12 +100,12 @@ class CartController extends \yii\web\Controller
             $userId = Yii::$app->user->id;
             $cartItem = CartItems::find()->userId($userId)->productId($id)->one();
             if ($cartItem) {
-                $cartItem->quantity++;
+                $cartItem->quantity= $cartItem->quantity + $_POST['quantity'];
             } else {
                 $cartItem = new CartItems();
                 $cartItem->product_id = $id;
                 $cartItem->created_by = $userId;
-                $cartItem->quantity = 1;
+                $cartItem->quantity = $_POST['quantity'];
             }
 
 
@@ -190,6 +190,10 @@ class CartController extends \yii\web\Controller
             $productPurchases->product_id= $cartItem['id'];
             $productPurchases->purchase_id=$purchase->purchase_id;
             $productPurchases->quantity=$cartItem['quantity'];
+
+            $product= \common\models\Products::findOne($cartItem['id']);
+            $product->stock=$product->stock - $cartItem['quantity'];
+            $product->save();
             $productPurchases->save();
 
             CartItems::deleteAll('created_by=' . Yii::$app->user->id);

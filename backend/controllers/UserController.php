@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use app\models\AuthAssignment;
+use app\models\AuthItem;
 use common\models\user;
 use backend\models\UserSearch;
 use yii\data\ActiveDataProvider;
@@ -101,13 +103,13 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = AuthAssignment::findBySql('SELECT * FROM auth_assignment WHERE user_id='.$id)->one();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->user_id]);
         }
 
-        return $this->render('update', [
+        return $this->render('/auth-assignment/update.php', [
             'model' => $model,
         ]);
     }

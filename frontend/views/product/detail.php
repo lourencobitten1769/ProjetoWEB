@@ -24,6 +24,7 @@ $this->title = $product->product_name;
                     <div class="product-desc"><?php echo $product->description ?></div>
                     <hr>
                     <div class="product-price"><?php echo $product->price?>€</div>
+
                     <?php
                     $stock=$product->stock;
 
@@ -39,6 +40,7 @@ $this->title = $product->product_name;
                     ?>
                     <hr>
                     <div class="btn-group cart">
+
                         <?php
                         if($stock==0)
                         {?>
@@ -49,9 +51,13 @@ $this->title = $product->product_name;
                         }
                         else{
                             ?>
-                            <a href="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id])?>"><button type="button" class="btn btn-success btn-add-to-cart">
-                            Adicionar ao Carrinho
-                            </button></a>
+                                <form method="post" action="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id,])?>">
+                                    Quantidade:
+                                      <input type="number" min="0" max="<?php echo $product->stock?>" name="quantity">
+                                <input type="submit" class="btn btn-success btn-add-to-cart" value="Adicionar ao carrinho">
+                                </form>
+
+
                         <?php
                         }
                         ?>

@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'size')->textInput() ?>
+    <?= $form->field($model, 'size')->textInput(['class'=>'size form-control']) ?>
 
     <?= $form->field($model, 'stock')->textInput() ?>
 
@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList($listData,['prompt'=>'Select...']) ?>
+    <?= $form->field($model, 'category_id')->dropDownList($listData,['class'=>'category form-control','prompt'=>'Select...','onchange'=>'callAFunction()']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
@@ -40,3 +40,15 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<script>
+    function callAFunction(){
+        if($('.category').val()!=1){
+            $('.size').prop('disabled',true);
+        }
+        else {
+            $('.size').prop('disabled',false);
+        }
+    }
+</script>
+
