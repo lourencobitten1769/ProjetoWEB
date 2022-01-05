@@ -89,4 +89,14 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Productspurchases::className(), ['product_id' => 'product_id']);
     }
+
+    public function setProductName($product_name)
+    {
+        $this->product_name=$product_name;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description=$description;
+    }
 }

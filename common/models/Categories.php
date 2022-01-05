@@ -53,4 +53,14 @@ class Categories extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Products::className(), ['category_id' => 'category_id']);
     }
+
+    public function setCategoryId($id)
+    {
+        $this->category_id=$id;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category=$category;
+    }
 }
