@@ -82,4 +82,19 @@ class CartItems extends \yii\db\ActiveRecord
     {
         return new \common\models\query\CartItemsQuery(get_called_class());
     }
+
+    public function setProductId($productId)
+    {
+        $this->product_id= $productId;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity= $quantity;
+    }
+
+    public function setCreatedBy($createdBy)
+    {
+        $this->created_by= $createdBy;
+    }
 }

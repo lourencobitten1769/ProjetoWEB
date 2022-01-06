@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <h4 class="title pull-left">Orders List</h4>
+                                <h4 class="title pull-left">Restock</h4>
                             </div>
                         </div>
                     </div>
@@ -43,9 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colspan="5"><input type="text" class="form-control" placeholder="Search Orders"></td>
-                            </tr>
                             <?php
                             foreach ($products as $product){
 
@@ -58,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             </div>
                                         </td>
                                         <td><?php echo $product->product_name?></td>
-                                        <td><?php echo $product->description?></td>
+                                        <td><?php echo substr($product->description,0, 50)?></td>
                                         <td><?php echo $product->stock?></td>
                                         <td>
                                             <form method="post" action="<?php echo \yii\helpers\Url::to(['/order/update', 'product_id'=>$product->product_id,])?>">
@@ -75,26 +72,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             </tbody>
                         </table>
                     </div>
-                    <!--<div class="panel-footer">
-                        <div class="row">
-                            <div class="col-sm-6 col-xs-6">Showing <b><?php /*echo $number_products*/?></b> out of <b><?php /*echo $number_products*/?></b> entries</div>
-                            <div class="col-sm-6 col-xs-6">
-                                <ul class="pagination hidden-xs pull-right">
-                                    <li><a href="#">«</a></li>
-
-                                    <?php
-/*                                    $number_pages=ceil($number_products/5);
-
-                                    for($pag=1;$pag<=$number_pages;$pag++)
-                                    {
-                                        */?>
-                                        <li><a href="#"><?php /*echo $pag*/?></a></li>
-                                    <?php /*} */?>
-
-                                    <li><a href="#">»</a></li>
-                                </ul>
-                            </div>
-                        </div>-->
                     </div>
                 </div>
             </div>

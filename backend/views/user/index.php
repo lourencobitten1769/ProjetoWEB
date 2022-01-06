@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <h4 class="title pull-left">Users List</h4>
+                                <h4 class="title pull-left">Lista de Utilizadores</h4>
                             </div>
                         </div>
                     </div>
@@ -36,14 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th>Email</th>
                                 <th>Morada</th>
                                 <th>NIF</th>
-                                <th>Pontos</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colspan="5"><input type="text" class="form-control" placeholder="Search Products"></td>
-                            </tr>
                             <?php
                             foreach ($users->getModels() as $user){?>
                                 <tr>
@@ -52,11 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?php echo $user->email?></td>
                                     <td><?php echo $user->morada?></td>
                                     <td><?php echo $user->nif?></td>
-                                    <td><?php echo $user->pontos?></td>
                                     <td>
                                         <ul class="action-list">
                                             <li><a href="?r=user%2Fview&id=<?php echo $user->id?>" class="btn btn-success"><i class="fa fa-search"></i></a></li>
-                                            <li><a href="?r=user%2Fupdate&id=<?php echo $user->id?>" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
+                                            <li><a id="edit" href="?r=user%2Fupdate&id=<?php echo $user->id?>" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
                                             <li><a href="?r=user%2Fdelete&id=<?php echo $user->id?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
                                         </ul>
                                     </td>
@@ -70,10 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6">Showing <b>5</b> out of <b><?php echo $number_users?></b> entries</div>
                             <div class="col-sm-6 col-xs-6">
-                                <ul class="pagination hidden-xs pull-right">
-                                    <li><a href="#">«</a></li>
+                                <ul class="pagination hidden-xs pull-right" style="justify-content: center; margin-left: 100%">
                                     <?php
                                     $number_pages=ceil($number_users/5);
 
@@ -84,7 +77,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?php
                                     }
                                     ?>
-                                    <li><a href="#">»</a></li>
                                 </ul>
                             </div>
                         </div>

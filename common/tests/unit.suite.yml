@@ -8,7 +8,7 @@ modules:
 
     config:
         Db:
-            dsn: 'mysql:host=localhost;dbname=lojadiferenciada'
+            dsn: 'mysql:host=127.0.0.1;dbname=lojadiferenciada'
             user: 'root'
             password: ''
             cleanup: true

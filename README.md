@@ -58,3 +58,16 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+
+Login Administrador:
+	Username: admin
+	Password: administrador
+
+Login Product Manager:
+	Username: bitten
+	Password: lourenco65
+
+Login Cliente: 
+	Username:tomas
+	Password:tomas123

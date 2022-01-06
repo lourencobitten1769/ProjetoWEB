@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
     $listData=\yii\helpers\ArrayHelper::map($userType,'name','name');
     ?>
 
-    <?= $form->field($model, 'item_name')->dropDownList($listData) ?>
+    <?= $form->field($model, 'item_name')->dropDownList($listData)->label('Role') ?>
 
 
     <div class="form-group">

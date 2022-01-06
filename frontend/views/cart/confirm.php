@@ -36,7 +36,7 @@ $precoCompra =0;
         <a href="<?php echo \yii\helpers\Url::to(['/cart/payment','precoCompra'=>$precoCompra])?>"><img style="width: 250px;" src="images/paypalBtn.png" </a>
         <br>
 
-        <a href="<?php echo \yii\helpers\Url::to(['/cart/confirm'])?>"><img style="width: 200px; margin-left: 10px" src="images/multibanco.png" </a>
+        <a href="<?php echo \yii\helpers\Url::to(['/cart/payment','precoCompra'=>$precoCompra])?>"><img style="width: 200px; margin-left: 10px" src="images/multibanco.png" </a>
     </div>
 
 </div>

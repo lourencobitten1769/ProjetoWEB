@@ -50,15 +50,17 @@ $this->title = $product->product_name;
                         <?php
                         }
                         else{
-                            ?>
+                            if(!Yii::$app->user->isGuest){?>
+
+
                                 <form method="post" action="<?php echo \yii\helpers\Url::to(['/cart/add', 'id'=>$product->product_id,])?>">
-                                    Quantidade:
-                                      <input type="number" min="0" max="<?php echo $product->stock?>" name="quantity">
-                                <input type="submit" class="btn btn-success btn-add-to-cart" value="Adicionar ao carrinho">
+
+                                    <label for="quantity">Quantidade</label>
+                                      <input type="number" min="0" max="<?php echo $product->stock?>" name="quantity" id="quantity">
+                                <input type="submit" class="btn btn-success btn-add-to-cart" name="btnAddCart" value="Adicionar ao carrinho">
                                 </form>
-
-
                         <?php
+                                 }
                         }
                         ?>
                     </div>

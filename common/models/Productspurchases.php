@@ -70,4 +70,19 @@ class Productspurchases extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Purchases::className(), ['purchase_id' => 'purchase_id']);
     }
+
+    public function setProductId($productId)
+    {
+        $this->product_id=$productId;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity=$quantity;
+    }
+
+    public function setPurchaseId($purchaseId)
+    {
+        $this->purchase_id=$purchaseId;
+    }
 }

@@ -44,7 +44,7 @@
                     ['label' => 'Utilizadores', 'url' => ['user/index']],
                     ['label' => 'Produtos', 'url' => ['product/index']],
                     ['label' => 'Categorias', 'url' => ['category/index']],
-                    ['label' => 'Encomendas', 'url' => ['order/index']],
+                    ['label' => 'Restock', 'url' => ['order/index']],
                     ['label' => 'Compras', 'url' => ['purchase/index']],
 
                 ];
@@ -52,7 +52,7 @@
             else if ($user->item_name=='productManager'){
                 $menuitems=[
                     ['label' => 'Produtos', 'url' => ['product/index']],
-                    ['label' => 'Encomendas', 'url' => ['order/index']],
+                    ['label' => 'Restock', 'url' => ['order/index']],
                 ];
             }
             ?>

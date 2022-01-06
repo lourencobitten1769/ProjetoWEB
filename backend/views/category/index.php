@@ -24,8 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <h4 class="title pull-left">Categories List</h4>
-                                <a href="?r=category%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Create Category</a>
+                                <h4 class="title pull-left">Lista de Categorias</h4>
+                                <a href="?r=category%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Criar Categoria</a>
                             </div>
                         </div>
                     </div>
@@ -33,15 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Category ID</th>
-                                <th>Category Name</th>
+                                <th>ID da Categoria</th>
+                                <th>Nome da Categoria</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colspan="5"><input type="text" class="form-control" placeholder="Search Categories"></td>
-                            </tr>
                             <?php
 
                             $number_pages=ceil($number_categories/5);
@@ -67,10 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6">Showing <b><?php echo $number_categories?></b> out of <b><?php echo $number_categories?></b> entries</div>
-                            <div class="col-sm-6 col-xs-6">
-                                <ul class="pagination hidden-xs pull-right">
-                                    <li><a href="#">«</a></li>
+                            <div class="col-sm-6 col-xs-6" >
+                                <ul class="pagination hidden-xs pull-right" style="justify-content: center; margin-left: 100%">
                                     <?php
                                     $number_pages=ceil($number_categories/5);
 
@@ -79,7 +74,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ?>
                                         <li><a href="?r=category%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
                                     <?php } ?>
-                                    <li><a href="#">»</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+use app\models\Products;
 use common\models\LoginForm;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -62,8 +64,30 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->can("manageUsers") || Yii::$app->user->can("manageProducts")){
-            return $this->render("index");
+        if(Yii::$app->user->can("manageUsers")){
+            $users= \app\models\User::find();
+            $provider= new ActiveDataProvider([
+                'query'=>$users,
+                'pagination'=>[
+                    'pageSize'=> 5
+                ]
+            ]);
+            $number_users=\app\models\User::find()->count();
+            return $this->render('/user/index',['users'=>$provider,'number_users'=>$number_users]);
+        }
+
+        else if(Yii::$app->user->can("manageProducts")){
+            $products= Products::find();
+            $provider= new ActiveDataProvider([
+                'query'=>$products,
+                'pagination'=>[
+                    'pageSize'=> 5
+                ]
+            ]);
+            $number_products=Products::find()->count();
+
+
+            return $this->render('/product/index',['products'=>$provider,'number_products'=>$number_products]);
         }
         else{
             $this->layout = 'main-login';

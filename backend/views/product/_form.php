@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?php
 
-    if($model->category_id==1)
+    if($model->category_id==1 || $model->category_id==4)
     {
             echo $form->field($model, 'size')->textInput(['class'=>'size form-control']);
     }
@@ -51,7 +51,7 @@ use yii\widgets\ActiveForm;
 
 <script>
     function callAFunction(){
-        if($('.category').val()!=1){
+        if($('.category').val()!=1 && $('.category').val()!=4){
             $('.size').prop('disabled',true);
         }
         else {

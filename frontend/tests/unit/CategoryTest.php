@@ -2,7 +2,6 @@
 namespace frontend\tests;
 
 use common\models\Categories;
-use common\models\Products;
 
 class CategoryTest extends \Codeception\Test\Unit
 {

@@ -36,13 +36,15 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Página Inicial', 'url' => ['/site/index']],
-        ['label' => 'Carrinho de Compras' ,'url'=>['/cart/index']],
-        ['label' => 'Perfil', 'url' => ['/user/profile']],
+
+
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems[]= ['label' => 'Carrinho de Compras' ,'url'=>['/cart/index']];
+        $menuItems[] = ['label' => 'Perfil', 'url' => ['/user/profile']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(

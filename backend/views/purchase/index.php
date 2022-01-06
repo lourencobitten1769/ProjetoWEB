@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <h4 class="title pull-left">Purchases List</h4>
+                                <h4 class="title pull-left">Lista de Compras</h4>
                             </div>
                         </div>
                     </div>
@@ -34,17 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Purchase ID</th>
+                                <th>ID da Compra</th>
                                 <th>Preço Total</th>
                                 <th>Data</th>
-                                <th>User ID</th>
+                                <th>Utilizador</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colspan="5"><input type="text" class="form-control" placeholder="Search Orders"></td>
-                            </tr>
                             <?php
                             foreach ($purchases->getModels() as $purchase){?>
                                 <tr>
@@ -69,10 +66,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6">Showing <b>5</b> out of <b><?php echo $number_purchases ?></b> entries</div>
                             <div class="col-sm-6 col-xs-6">
-                                <ul class="pagination hidden-xs pull-right">
-                                    <li><a href="#">«</a></li>
+                                <ul class="pagination hidden-xs pull-right"  style="justify-content: center; margin-left: 100%">
                                     <?php
                                     $number_pages=ceil($number_purchases/5);
 
@@ -81,7 +76,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ?>
                                         <li><a href="?r=purchase%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
                                     <?php } ?>
-                                    <li><a href="#">»</a></li>
                                 </ul>
                             </div>
                         </div>

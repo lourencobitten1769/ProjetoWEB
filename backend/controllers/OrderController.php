@@ -93,7 +93,8 @@ class OrderController extends Controller
         $quantity=$_POST['quantity'];
 
         $product->stock=$product->stock + $quantity;
-        $product->save();
+
+        $product->save(false);
 
         $products= \app\models\Products::find();
         $provider= new ActiveDataProvider([
@@ -105,14 +106,6 @@ class OrderController extends Controller
         $number_products=Products::find()->count();
 
         return $this->render('../product/index',['products'=>$provider,'number_products'=>$number_products]);
-      /*
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'order_id' => $model->order_id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);*/
     }
 
     /**

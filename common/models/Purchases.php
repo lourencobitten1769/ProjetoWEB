@@ -71,4 +71,19 @@ class Purchases extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function setTotalPrice($totalPrice)
+    {
+        $this->total_price=$totalPrice;
+    }
+
+    public function setDate($date)
+    {
+        $this->date=$date;
+    }
+
+    public function setUserId($userId)
+    {
+        $this->user_id=$userId;
+    }
 }

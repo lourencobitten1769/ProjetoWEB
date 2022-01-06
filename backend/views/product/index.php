@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
-                            <h4 class="title pull-left">Users List</h4>
-                            <a href="?r=product%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Create Product</a>
+                            <h4 class="title pull-left">Lista de Produtos</h4>
+                            <a href="?r=product%2Fcreate" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Adicionar Produto</a>
                         </div>
                     </div>
                 </div>
@@ -49,9 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="5"><input type="text" class="form-control" placeholder="Search Products"></td>
-                            </tr>
                             <?php
                             foreach ($products->getModels() as $product){?>
                             <tr>
@@ -61,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </td>
                                 <td><?php echo $product->product_name?></td>
-                                <td><?php echo $product->description?></td>
+                                <td><?php echo substr($product->description,0, 50)?></td>
                                 <td><?php echo $product->price?></td>
                                 <td><?php echo $product->size?></td>
                                 <td><?php echo $product->stock?></td>
@@ -83,10 +80,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-sm-6 col-xs-6">Showing <b><?php echo $number_products?></b> out of <b><?php echo $number_products?></b> entries</div>
                         <div class="col-sm-6 col-xs-6">
-                            <ul class="pagination hidden-xs pull-right">
-                                <li><a href="#">«</a></li>
+                            <ul class="pagination hidden-xs pull-right"  style="justify-content: center; margin-left: 100%">
                                 <?php
                                 $number_pages=ceil($number_products/5);
 
@@ -95,7 +90,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ?>
                                     <li><a href="?r=product%2Findex&page=<?php echo $pag?>"><?php echo $pag?></a></li>
                                 <?php } ?>
-                                <li><a href="#">»</a></li>
                             </ul>
                         </div>
                     </div>
@@ -104,24 +98,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-    <?php /*GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'product_id',
-            'product_name',
-            'description:ntext',
-            'price',
-            'size',
-            //'stock',
-            //'image',
-            //'category_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); */?>
 
     <?php Pjax::end(); ?>
 
