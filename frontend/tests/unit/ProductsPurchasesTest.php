@@ -34,7 +34,7 @@ class ProductsPurchasesTest extends \Codeception\Test\Unit
         $this->assertTrue($productspurchases->validate(['quantity']));
 
         $productspurchases->setPurchaseId(20);
-        $this->assertTrue($productspurchases->validate(['purchase_id']));
+        $this->assertFalse($productspurchases->validate(['purchase_id']));
 
         $productspurchases->save();
 

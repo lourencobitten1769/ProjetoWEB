@@ -83,4 +83,6 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Purchases::className(), ['user_id' => 'id']);
     }
+
+
 }

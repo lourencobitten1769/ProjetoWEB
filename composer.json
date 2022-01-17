@@ -21,7 +21,15 @@
         "hail812/yii2-adminlte3": "~1.1",
         "omnilight/yii2-shopping-cart": "*",
         "mpdf/mpdf": "*",
-        "dompdf/dompdf": "^1.1"
+        "dompdf/dompdf": "^1.1",
+        "bluerhinos/phpmqtt": "@dev",
+        "ext-json": "*",
+        "php-mqtt/client": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bluerhinos\\": "./"
+        }
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -18,9 +18,12 @@ return [
     ],
     'components' => [
         'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
             'csrfParam' => '_csrf-backend',
             'enableCsrfValidation' => false,
-        ],
+            ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -44,20 +47,26 @@ return [
         ],
 
 
-
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
                 [
                     'class'=>'yii\rest\UrlRule',
-                    'controller'=>'api/user',
+                    'controller'=> ['api/category','api/product','api/purchase','api/user','api/cart','api/productspurchases'],
                     'pluralize'=>false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total',
+                        'GET purchaseuser/{id}'=>'purchaseuser',
+                        'GET produtoscategoria/{id}'=> 'produtoscategoria',
+                        'GET cartuser/{id}'=> 'cartuser',
+                        'GET login'=>'login',
+                    ],
                 ]
             ],
         ],
-        */
+
 
 
 

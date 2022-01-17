@@ -38,6 +38,6 @@ class PurchaseTest extends \Codeception\Test\Unit
 
         $purchase->save();
 
-        $this->tester->seeInDatabase('purchases',['total_price'=>'70']);
+        $this->tester->seeInDatabase('purchases',['total_price'=>'3998']);
     }
 }

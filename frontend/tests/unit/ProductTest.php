@@ -34,6 +34,6 @@ class ProductTest extends \Codeception\Test\Unit
 
         $product->save();
 
-        $this->tester->seeInDatabase('products',['product_name'=>'Rato']);
+        $this->tester->seeInDatabase('products',['product_name'=>'COMPUTADOR DESKTOP LOJA DIFERENCIADA GAMING GML-GR55QM1']);
     }
 }

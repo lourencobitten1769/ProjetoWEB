@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use app\models\Cupoes;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -213,5 +214,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * Gets query for [[Cupoes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCupoes()
+    {
+        return $this->hasMany(Cupoes::className(), ['user_id' => 'id']);
     }
 }

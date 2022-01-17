@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <td><?php echo substr($product->description,0, 50)?></td>
                                         <td><?php echo $product->stock?></td>
                                         <td>
-                                            <form method="post" action="<?php echo \yii\helpers\Url::to(['/order/update', 'product_id'=>$product->product_id,])?>">
+                                            <form method="post" action="<?php echo \yii\helpers\Url::to(['/product/update', 'product_id'=>$product->product_id,])?>">
                                                 <input type="number" name="quantity">
                                                 <input type="submit" name="submit" value="Restock">
                                             </form>

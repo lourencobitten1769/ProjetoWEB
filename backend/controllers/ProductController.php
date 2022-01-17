@@ -5,6 +5,7 @@ namespace backend\controllers;
 use app\models\Products;
 use backend\models\ProductSearch;
 use yii\data\ActiveDataProvider;
+use yii\db\AfterSaveEvent;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -43,6 +44,7 @@ class ProductController extends Controller
         //$dataProvider = $searchModel->search($this->request->queryParams);
 
         $products= Products::find();
+        //echo json_encode($products);
         $provider= new ActiveDataProvider([
             'query'=>$products,
             'pagination'=>[
@@ -92,8 +94,9 @@ class ProductController extends Controller
                 $model->image= $imageFile->baseName.".".$imageFile->extension;
                 $model->save(false);
 
+                //$model->afterSave(true,$model);
 
-                return $this->redirect("?r=product%2Fview&product_id=" . $model->product_id);
+                //return $this->redirect("?r=product%2Fview&product_id=" . $model->product_id);
             }
         } else {
             $model->loadDefaultValues();
@@ -115,22 +118,44 @@ class ProductController extends Controller
      */
     public function actionUpdate($product_id)
     {
-        $model = $this->findModel($product_id);
+        if(isset($_POST['submit'])){
+            $product= $this->findModel($product_id);
+            $quantity= $_POST['quantity'];
 
-        if ($this->request->isPost && $model->load($this->request->post())) {
-            $imageFile= UploadedFile::getInstance($model,'image');
-            if(isset($imageFile->size)){
-                $imageFile->saveAs('@frontend/web/images/'.$imageFile->baseName.".".$imageFile->extension);
+            $product->stock=$product->stock + $quantity;
+
+            $product->save(false);
+
+            $products= \app\models\Products::find();
+            $provider= new ActiveDataProvider([
+                'query'=>$products,
+                'pagination'=>[
+                    'pageSize'=> 5
+                ]
+            ]);
+            $number_products=Products::find()->count();
+
+            return $this->render('../product/index',['products'=>$provider,'number_products'=>$number_products]);
+        }
+        else{
+            $model = $this->findModel($product_id);
+
+            if ($this->request->isPost && $model->load($this->request->post())) {
+                $imageFile= UploadedFile::getInstance($model,'image');
+                if(isset($imageFile->size)){
+                    $imageFile->saveAs('@frontend/web/images/'.$imageFile->baseName.".".$imageFile->extension);
+                }
+
+                $model->image= $imageFile->baseName.".".$imageFile->extension;
+                $model->save(false);
+                //return $this->redirect(['view', 'product_id' => $model->product_id]);
             }
 
-            $model->image= $imageFile->baseName.".".$imageFile->extension;
-            $model->save(false);
-            return $this->redirect(['view', 'product_id' => $model->product_id]);
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**

@@ -89,23 +89,7 @@ class OrderController extends Controller
      */
     public function actionUpdate($product_id)
     {
-        $product=Products::findOne($product_id);
-        $quantity=$_POST['quantity'];
 
-        $product->stock=$product->stock + $quantity;
-
-        $product->save(false);
-
-        $products= \app\models\Products::find();
-        $provider= new ActiveDataProvider([
-            'query'=>$products,
-            'pagination'=>[
-                'pageSize'=> 5
-            ]
-        ]);
-        $number_products=Products::find()->count();
-
-        return $this->render('../product/index',['products'=>$provider,'number_products'=>$number_products]);
     }
 
     /**

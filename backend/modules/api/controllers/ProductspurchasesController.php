@@ -5,9 +5,9 @@ namespace app\modules\api\controllers;
 use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 
-class PurchaseController extends ActiveController
+class ProductspurchasesController extends ActiveController
 {
-    public $modelClass='app\models\Purchases';
+    public $modelClass='common\models\ProductsPurchases';
 
     public function behaviors()
     {
@@ -19,10 +19,10 @@ class PurchaseController extends ActiveController
         return $behaviors;
     }
 
-    public function actionPurchaseuser($id){
-        $purchasesModel= new $this->modelClass;
-        $rec= $purchasesModel::findBySql("SELECT * FROM purchases WHERE user_id= $id")->all();
-        return ['getpurchasesuser'=> $rec];
+    public function actionProductsbypurchase($id){
+        $purchmodel = new $this->modelClass;
+        $recs= $purchmodel::findBySql("SELECT * FROM productspurchases WHERE purchase_id= $id");
+        return ['produtoscpurchase'=>$recs];
     }
     public function auth($username, $password)
     {
@@ -32,5 +32,6 @@ class PurchaseController extends ActiveController
             return $user;
         }
     }
-
 }
+
+

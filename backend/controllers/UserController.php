@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\AuthAssignment;
 use app\models\AuthItem;
+use app\models\Cupoes;
 use common\models\user;
 use backend\models\UserSearch;
 use yii\data\ActiveDataProvider;
@@ -67,8 +68,12 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        $cupoes=Cupoes::findBySql("SELECT * FROM cupoes WHERE user_id= $id")->asArray()->all();
+
+
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id), 'cupoes'=>$cupoes
         ]);
     }
 
