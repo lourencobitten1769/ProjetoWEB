@@ -9,7 +9,7 @@ class CartController extends ActiveController
 {
     public $modelClass='common\models\CartItems';
 
-    public function behaviors()
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
@@ -17,20 +17,26 @@ class CartController extends ActiveController
             'auth' => [$this, 'auth']
         ];
         return $behaviors;
-    }
+    }*/
 
     public function actionCartuser($id){
         $cartmodel= new $this->modelClass;
         $recs=$cartmodel::findBySql("SELECT * FROM cart_items WHERE created_by= $id")->all();
         return ['cartuser'=>$recs];
     }
-    public function auth($username, $password)
+
+    public function actionDeletecartuser($id){
+        $cartmodel=new $this->modelClass;
+        $recs=$cartmodel::findBySql("DELETE FROM cart_items WHERE created_by= $id")->all();
+        return ['cartuser'=>$recs];
+    }
+    /*public function auth($username, $password)
     {
         $user = \common\models\User::findByUsername($username);
         if ($user && $user->validatePassword($password))
         {
             return $user;
         }
-    }
+    }*/
 }
 

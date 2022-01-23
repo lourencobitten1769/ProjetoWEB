@@ -62,6 +62,9 @@ return [
                         'GET produtoscategoria/{id}'=> 'produtoscategoria',
                         'GET cartuser/{id}'=> 'cartuser',
                         'GET login'=>'login',
+                        'POST register'=>'register',
+                        'GET lastpurchase'=>'lastpurchase',
+                        'GET deletecartuser'=>'deletecartuser'
                     ],
                 ]
             ],

@@ -17,8 +17,8 @@ class ProductController extends ActiveController
             'auth' => [$this, 'auth']
         ];
         return $behaviors;
-    }*/
-
+    }
+*/
     public function actionTotal()
     {
         $prodmodel = new $this->modelClass;
@@ -33,7 +33,7 @@ class ProductController extends ActiveController
         return ['produtoscategoria'=>$recs];
     }
 
-    /*public function auth($username, $password)
+   /*public function auth($username, $password)
     {
         $user = \common\models\User::findByUsername($username);
         if ($user && $user->validatePassword($password))

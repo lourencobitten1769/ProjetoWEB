@@ -9,7 +9,7 @@ class CategoryController extends ActiveController
 {
     public $modelClass='app\models\Categories';
 
-    public function behaviors()
+   /* public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
@@ -26,7 +26,7 @@ class CategoryController extends ActiveController
         {
             return $user;
         }
-    }
+    }*/
 }
 
 

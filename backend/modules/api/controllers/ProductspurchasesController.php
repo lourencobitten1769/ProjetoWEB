@@ -9,7 +9,7 @@ class ProductspurchasesController extends ActiveController
 {
     public $modelClass='common\models\ProductsPurchases';
 
-    public function behaviors()
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
@@ -17,21 +17,21 @@ class ProductspurchasesController extends ActiveController
             'auth' => [$this, 'auth']
         ];
         return $behaviors;
-    }
+    }*/
 
     public function actionProductsbypurchase($id){
         $purchmodel = new $this->modelClass;
         $recs= $purchmodel::findBySql("SELECT * FROM productspurchases WHERE purchase_id= $id");
         return ['produtoscpurchase'=>$recs];
     }
-    public function auth($username, $password)
+    /*public function auth($username, $password)
     {
         $user = \common\models\User::findByUsername($username);
         if ($user && $user->validatePassword($password))
         {
             return $user;
         }
-    }
+    }*/
 }
 
 
